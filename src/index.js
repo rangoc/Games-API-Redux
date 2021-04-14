@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 // Components imports
 import App from 'components/App';
 // Redux Setup
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from 'reducers';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__({ latency: 0 })
-);
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // combining redux devtools with middleware because createStore receives only 2 arguments
+
+const store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
