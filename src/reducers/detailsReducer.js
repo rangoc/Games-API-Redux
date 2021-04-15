@@ -1,8 +1,8 @@
 import { FETCH_GAME_DETAILS } from 'actions/types';
 
 const initialState = {
-  game: {},
-  screenshots: {},
+  game: { platforms: [] },
+  screenshots: { results: [] },
 };
 export const detailsReducer = (state = initialState, action) => {
   switch (action.type) {
