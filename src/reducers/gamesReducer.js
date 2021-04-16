@@ -1,4 +1,8 @@
-import { FETCH_POPULAR_GAMES } from 'actions/types';
+import {
+  FETCH_POPULAR_GAMES,
+  FETCH_SEARCHED_GAMES,
+  CLEAR_SEARCHED,
+} from 'actions/types';
 
 const initState = {
   popular: [],
@@ -16,6 +20,10 @@ export const gamesReducer = (state = initState, action) => {
         upcoming: action.payload.upcoming,
         newGames: action.payload.newGames,
       };
+    case FETCH_SEARCHED_GAMES:
+      return { ...state, searched: action.payload.searched };
+    case CLEAR_SEARCHED:
+      return { ...state, searched: [] };
     default:
       return { ...state };
   }
