@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // Styling and Animation
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { popup } from '../animations';
 // Redux
 import { useDispatch } from 'react-redux';
 import { fetchGameDetails } from 'actions/detailsAction';
@@ -17,7 +18,13 @@ const Game = ({ name, released, image, id }) => {
     dispatch(fetchGameDetails(id));
   };
   return (
-    <StyledGame layoutId={stringPathId} onClick={fetchDetailsHandler}>
+    <StyledGame
+      layoutId={stringPathId}
+      variants={popup}
+      initial="hidden"
+      animate="show"
+      onClick={fetchDetailsHandler}
+    >
       <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <p>{released}</p>

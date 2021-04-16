@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // Animation
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { fadeIn } from '../animations';
 import logo from 'assets/logo.svg';
 // Redux and Routes
 import { fetchSearch, clearSearch } from 'actions/gamesAction';
@@ -20,7 +21,7 @@ const Nav = () => {
     setTextInput('');
   };
   return (
-    <StyledNav>
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
       <Logo onClick={() => dispatch(clearSearch())}>
         <img src={logo} alt="logo" />
         <h1>Games</h1>
