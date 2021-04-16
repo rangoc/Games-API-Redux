@@ -1,6 +1,7 @@
 import React from 'react';
 // Components and Pages
 import Home from 'pages/Home';
+import Nav from 'components/Nav';
 // Styles
 import GlobalStyle from 'components/GlobalStyle';
 // Router
@@ -9,6 +10,7 @@ const App = () => {
   return (
     <div>
       <GlobalStyle />
+      <Nav />
       <Route path={['/game/:id', '/']}>
         <Home />
       </Route>
